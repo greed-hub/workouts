@@ -4,10 +4,13 @@ import { useState } from 'react'
 
 const Header = ({logOut, logIn}) => {
     const [toggle, setToggle] = useState(false)
-    const [email] = useState(process.env.log)
-    const [password] = useState(process.env.pass)
+    // const [email] = useState(process.env.log)
+    // const [password] = useState(process.env.pass)
+    const [email] = useState('testuser@testuser')
+    const [password] = useState('testuser#1')
 
     const handleLogin = async () => {
+
         const input = {email, password}
         const response = await fetch('api/auth', {
             method: 'POST',
@@ -17,12 +20,18 @@ const Header = ({logOut, logIn}) => {
                 body: JSON.stringify(input)
         })
         const data = await response.json()
-        
         localStorage.setItem('token', data.token)
-        localStorage.setItem('user_id', data.user._id)
+        localStorage.setItem('user_id', data.user.id)
         localStorage.setItem('isAuth', true)
         logIn()
     }
+
+    // handleLogin().then((data) => {
+    //     localStorage.setItem('token', data.token)
+    //     localStorage.setItem('user_id', data.user.id)
+    //     localStorage.setItem('isAuth', true)
+    //     logIn()
+    // })
     
 
     return (
@@ -48,7 +57,7 @@ const Header = ({logOut, logIn}) => {
                     <span></span>
                     <span></span>
                 </div>
-                <HamburgerNav logOut={logOut} login={() => handleLogin()} toggleMenu={toggle}/>
+                <HamburgerNav logOut={logOut} login={handleLogin} toggleMenu={toggle}/>
                 
         </header>
     )
