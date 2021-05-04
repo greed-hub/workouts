@@ -4,10 +4,10 @@ import { useState } from 'react'
 
 const Header = ({logOut, logIn}) => {
     const [toggle, setToggle] = useState(false)
-    // const [email] = useState(process.env.log)
-    // const [password] = useState(process.env.pass)
-    const [email] = useState('testuser@testuser')
-    const [password] = useState('testuser#1')
+    const [email] = useState(process.env.log)
+    const [password] = useState(process.env.pass)
+    // const [email] = useState('testuser@testuser')
+    // const [password] = useState('testuser#1')
 
     const handleLogin = async () => {
 
