@@ -35,7 +35,7 @@ const Header = ({logOut, logIn}) => {
 
 
                 <div className='hideNav' style={{position: 'absolute', right: '10%'}}>
-                    {localStorage.getItem('token') !== null ? <button className='btn btnCTA' onClick={() => handleLogin()}>Test user</button> : ''}  
+                    {localStorage.getItem('token') !== null ? '' : <button className='btn btnCTA' onClick={() => handleLogin()}>Test user</button> }  
                     {localStorage.getItem('token') !== null ? <Link to='/workouts' className='nav-style'>Workouts</Link> : ''}  
                     {localStorage.getItem('token') !== null ? <Link to='/statistics' className='nav-style'>Statistics</Link> : ''}
                     {localStorage.getItem('token') !== null ? '' : <Link to='/login' className='nav-style'>Sign in</Link>}
