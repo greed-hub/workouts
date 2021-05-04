@@ -51,7 +51,7 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
-				<Header logOut={() => logOut()}/>
+				<Header logOut={() => logOut()} logIn={() => logIn()}/>
 					<Switch>
 
 						<Route exact path="/" render={() => (
