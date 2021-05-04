@@ -2,11 +2,12 @@
 import {Link} from 'react-router-dom'
 
 
-const HamburgerNav = ({logOut, toggleMenu}) => {
+const HamburgerNav = ({logOut, login, toggleMenu}) => {
     return (<>
         {toggleMenu ?
         
             <div className='hamburgerNav' >
+                    {localStorage.getItem('token') !== null ? '' : <button className='btn' onClick={login}>Test user</button> }  
                     {localStorage.getItem('token') !== null ? <div><Link to='/workouts' className='hamburgerText'>Workouts</Link></div> : ''} 
                     {localStorage.getItem('token') !== null ? <div><Link to='/statistics' className='hamburgerText'>Statistics</Link></div> : ''}
                     {localStorage.getItem('token') !== null ? '' : <div><Link to='/login' className='hamburgerText'>Sign in</Link></div>}

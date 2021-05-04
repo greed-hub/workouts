@@ -17,9 +17,9 @@ const Header = ({logOut, logIn}) => {
                 body: JSON.stringify(input)
         })
         const data = await response.json()
-
+        
         localStorage.setItem('token', data.token)
-        localStorage.setItem('user_id', data.user.id)
+        localStorage.setItem('user_id', data.user._id)
         localStorage.setItem('isAuth', true)
         logIn()
     }
@@ -48,7 +48,7 @@ const Header = ({logOut, logIn}) => {
                     <span></span>
                     <span></span>
                 </div>
-                <HamburgerNav logOut={logOut} toggleMenu={toggle}/>
+                <HamburgerNav logOut={logOut} login={() => handleLogin()} toggleMenu={toggle}/>
                 
         </header>
     )
