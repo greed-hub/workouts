@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom'
 import HamburgerNav from './HamburgerNav'
 import { useState } from 'react'
-import Login from './Auth/Login'
 
 const Header = ({logOut, logIn}) => {
     const [toggle, setToggle] = useState(false)
@@ -23,8 +22,8 @@ const Header = ({logOut, logIn}) => {
         localStorage.setItem('user_id', data.user.id)
         localStorage.setItem('isAuth', true)
         logIn()
-        }
     }
+    
 
     return (
         <header style={{width: '80%', marginTop: '30px', marginLeft: '10%', display: 'flex'}}>
