@@ -9,12 +9,16 @@ import LandingPage from'./components/LandingPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css';
 import Footer from './components/Footer'
+import Navbar from './components/Navbar';
+import MobileMenu from './components/MobileMenu';
 
 
 function App() {
 	const [userState, setUserState] = useState({
 		token : localStorage.getItem('token'),
 	})
+
+	const [menuOpen, setMenuOpen] = useState(false)
 	
 	const logIn = () => {
 		setUserState({...userState, token: localStorage.getItem('token')})
@@ -47,11 +51,15 @@ function App() {
 		)} />
 	)
 
+	const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
 
 	return (
 		<>
 			<BrowserRouter>
-				<Header logOut={() => logOut()} logIn={() => logIn()}/>
+				<Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} logOut={() => logOut()} />
+				<MobileMenu menuOpen={menuOpen} logOut={() => logOut()} />
 					<Switch>
 
 						<Route exact path="/" render={() => (

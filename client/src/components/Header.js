@@ -4,13 +4,12 @@ import { useState } from 'react'
 
 const Header = ({logOut, logIn}) => {
     const [toggle, setToggle] = useState(false)
-    const [email] = useState(process.env.log)
-    const [password] = useState(process.env.pass)
-    // const [email] = useState('testuser@testuser')
-    // const [password] = useState('testuser#1')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleLogin = async () => {
-
+        setEmail(process.env.log)
+        setPassword(process.env.pass)
         const input = {email, password}
         const response = await fetch('api/auth', {
             method: 'POST',
@@ -26,14 +25,6 @@ const Header = ({logOut, logIn}) => {
         logIn()
     }
 
-    // handleLogin().then((data) => {
-    //     localStorage.setItem('token', data.token)
-    //     localStorage.setItem('user_id', data.user.id)
-    //     localStorage.setItem('isAuth', true)
-    //     logIn()
-    // })
-    
-
     return (
         <header style={{width: '80%', marginTop: '30px', marginLeft: '10%', display: 'flex'}}>
             
@@ -44,7 +35,6 @@ const Header = ({logOut, logIn}) => {
 
 
                 <div className='hideNav' style={{position: 'absolute', right: '10%'}}>
-                    {/* {localStorage.getItem('token') !== null ? '' : <button className='btn btnCTA' onClick={() => handleLogin()}>Test user</button> }   */}
                     {localStorage.getItem('token') !== null ? <Link to='/workouts' className='nav-style'>Workouts</Link> : ''}  
                     {localStorage.getItem('token') !== null ? <Link to='/statistics' className='nav-style'>Statistics</Link> : ''}
                     {localStorage.getItem('token') !== null ? '' : <Link to='/login' className='nav-style'>Sign in</Link>}
